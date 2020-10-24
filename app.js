@@ -39,7 +39,7 @@ app.get('/', tasksRoute);
 app.post('/', tasksRoute);
 app.put('/:id', tasksRoute);
 app.delete('/:id', tasksRoute);
-app.listen(3001);
+app.listen(3000);
 
 module.exports = app;
 
