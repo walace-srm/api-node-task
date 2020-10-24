@@ -3,7 +3,6 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 var cors = require('cors');
-const nomeApp = process.env.npm_package_name;
 
 const url = 'mongodb+srv://admin:vasco070488@clusterfree-ai9uf.mongodb.net/test?retryWrites=true&w=majority'
 //const url = 'http://localhost:3001'
@@ -35,11 +34,6 @@ mongoose.connection.on('connected', () => {
 //const indexRoute = require('./Routes/index');
 const tasksRoute = require('./Routes/tasks');
 
-//HEROKU
-app.use(express.static(`${__dirname}/dist/${nomeApp}`));
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(`${__dirname}/dist/${nomeApp}/index.html`));
-});
 
 //app.use('/', indexRoute);
 app.get('/', tasksRoute);
