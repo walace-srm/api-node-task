@@ -26,20 +26,30 @@ mongoose.connection.on('connected', () => {
     console.log('Aplicação conectada ao banco de dados');
 })
 
+
 //BODY PARSER
 // app.use(bodyParser.urlencoded({extended: false}));
  app.use(cors());
  app.use(bodyParser.json());
 
 //const indexRoute = require('./Routes/index');
+const indexRoute = require('./Routes/index')
 const tasksRoute = require('./Routes/tasks');
+const usersRoute = require('./Routes/users');
 
+//app.use('/auth', usersRoute);
+app.use('/users', usersRoute)
+app.use('/', tasksRoute);
 
 //app.use('/', indexRoute);
 app.get('/', tasksRoute);
 app.post('/', tasksRoute);
 app.put('/:id', tasksRoute);
 app.delete('/:id', tasksRoute);
+//app.post('/create', indexRoute);
+app.post('/create', usersRoute);
+app.get('/', usersRoute);
+app.post('/auth', usersRoute);
 app.listen(process.env.PORT || 3000);
 
 module.exports = app;

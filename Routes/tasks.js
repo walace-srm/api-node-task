@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Tasks = require('../model/task');
+const auth = require('../middlewares/auth');
 
 //Async Await
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         const tasks = await Tasks.find({});
         return res.send(tasks);
@@ -45,5 +46,6 @@ router.delete('/:id', async (req, res) => {
         return res.send({ error: 'Erro ao deletar tarefa!' });
     }
 });
+
 
 module.exports = router;
