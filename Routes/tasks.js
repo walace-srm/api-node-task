@@ -4,7 +4,8 @@ const Tasks = require('../model/task');
 const auth = require('../middlewares/auth');
 
 //Async Await
-router.get('/', auth, async (req, res) => {
+//TODO:verificar token 'auth'
+router.get('/', async (req, res) => {
     try {
         const tasks = await Tasks.find({});
         return res.send(tasks);
