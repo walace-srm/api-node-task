@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 var cors = require('cors');
 
-const url = 'mongodb+srv://admin:vasco070488@clusterfree-ai9uf.mongodb.net/test?retryWrites=true&w=majority'
+const url = 'mongodb+srv://admin:vasco070488@clusterfree-ai9uf.mongodb.net/task-manager?retryWrites=true&w=majority'
 //const url = 'http://localhost:3001'
 const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true, useUnifiedTopology: true };
 
@@ -50,7 +50,7 @@ app.delete('/:id', tasksRoute);
 app.post('/create', usersRoute);
 app.get('/', usersRoute);
 app.post('/auth', usersRoute);
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3001);
 
 module.exports = app;
 
